@@ -6,7 +6,9 @@ cd %~dp0
 set repak_exe="%CD%\repak.exe"
 
 for /f "tokens=1,* delims==" %%A in (settings.ini) do (
+    if "%%A"=="compression_type" set compression_type=%%B
     if "%%A"=="pak_version" set pak_version=%%B
+    if "%%A"=="aes_key" set aes_key=%%B
 )
 
 if not defined pak_version (
