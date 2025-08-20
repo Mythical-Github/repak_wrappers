@@ -5,6 +5,13 @@ cd %~dp0
 
 set repak_exe="%CD%\repak.exe"
 
+:: Check if repak.exe exists
+if not exist "%repak_exe%" (
+    echo Error: repak.exe not found in "%CD%"
+    pause
+    exit /b
+)
+
 for /f "tokens=1,* delims==" %%A in (settings.ini) do (
     if "%%A"=="compression_type" set compression_type=%%B
     if "%%A"=="pak_version" set pak_version=%%B
@@ -42,3 +49,4 @@ if exist "%pak_file_name%" (
 %repak_exe% pack --version %pak_version% --compression %compression_type% "%~1"
 
 exit /b
+
