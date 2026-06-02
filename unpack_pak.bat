@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 cd %~dp0
 
-set repak_exe="%CD%\repak.exe"
+set "repak_exe=%CD%\repak.exe"
 
 :: Check if repak.exe exists
 if not exist "%repak_exe%" (
@@ -27,7 +27,7 @@ if exist "%pak_filename%" (
     rd /s /q "%pak_filename%"
 )
 
-%repak_exe% unpack "%~1"
+"%repak_exe%" unpack "%~1"
 
 exit /b
 

@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 
 cd %~dp0
 
-set repak_exe="%CD%\repak.exe"
+set "repak_exe=%CD%\repak.exe"
 
 :: Check if repak.exe exists
 if not exist "%repak_exe%" (
@@ -39,7 +39,7 @@ if exist "%pak_file_name%" (
     del "%pak_file_name%"
 )
 
-%repak_exe% pack --version %pak_version% "%~1"
+"%repak_exe%" pack --version %pak_version% "%~1"
 
 exit /b
 
